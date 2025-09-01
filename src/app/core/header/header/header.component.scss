@@ -1,0 +1,15 @@
+.main-nav{
+  position: absolute; /* superposé au hero */
+  inset: 0 0 auto 0;
+  background: transparent;
+  z-index: 30;
+  .nav-link{
+    font-size: .9rem;
+    letter-spacing: .02em;
+    opacity: .95;
+  }
+  .nav-link.active{
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+}

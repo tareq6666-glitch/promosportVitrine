@@ -1,0 +1,90 @@
+:host{
+  --header-offset: clamp(84px, 10vw, 130px);
+  --cta-gap: 28px;
+  --cards-overlap: -78px;
+  --cards-gap: 16px;
+
+  /* 👉 tailles des cards & images (augmentées) */
+  --game-card-h: 152px;                         /* hauteur carte */
+  --game-img-max-h: clamp(92px, 12vw, 124px);   /* hauteur max image */
+}
+
+/* ===== HERO ===== */
+.hero{
+  min-height: 560px;
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    url("/assets/bg_spectateur.png") center/cover no-repeat;
+}
+.hero .container{
+  padding-top: var(--header-offset);
+  padding-bottom: calc(var(--cta-gap) + (var(--cards-overlap) * -1) + var(--cards-gap));
+}
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background:#0b0b0b;
+  clip-path: polygon(0 0, 62% 0, 44% 100%, 0% 100%);
+  z-index:1;
+}
+.player{
+  position: absolute;
+  right: 6%;
+  bottom: -6px;
+  width: min(420px, 42vw);
+  z-index: 3;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,.5));
+  pointer-events: none;
+}
+.hero-kicker{ color:#cfcfcf; letter-spacing:.06em; opacity:.9; }
+.hero-title{ letter-spacing:.2px; }
+.hero-title .accent{ color:var(--primary); }
+.hero-sub{ color:#d0d0d0; max-width:560px; }
+.cta-wrap{ margin-top: 18px; margin-bottom: var(--cta-gap); }
+
+/* ===== CARDS ===== */
+.cards-strip{
+  position: relative;
+  z-index: 4;
+  margin-top: var(--cards-overlap);
+  margin-bottom: 24px;
+}
+
+.game-card{
+  height: var(--game-card-h);        /* ← plus haut */
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  display:flex; align-items:center; justify-content:center;
+  padding: 16px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.game-card img{
+  max-height: var(--game-img-max-h); /* ← images plus grandes */
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  display:block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+}
+.game-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+
+/* Responsive */
+@media (max-width: 991.98px){
+  .hero::before{ clip-path: polygon(0 0, 100% 0, 66% 100%, 0% 100%); }
+  .player{ right: -12px; width: min(360px, 65vw); opacity:.95; }
+  :host{ --cards-overlap: -60px; }
+}
+
+/* Un peu plus petit sur les très petits écrans */
+@media (max-width: 575.98px){
+  :host{
+    --game-card-h: 140px;
+    --game-img-max-h: 100px;
+  }
+}
