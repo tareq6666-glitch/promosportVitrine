@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ActualitesService, Actualite } from '../../../actualites/actualites.service';
 
 @Component({
   selector: 'app-header',
@@ -9,4 +11,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  actualites$: Observable<Actualite[]> = this.actualitesService.getActualites();
+
+  constructor(private actualitesService: ActualitesService) {}
+}
