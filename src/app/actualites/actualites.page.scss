@@ -18,9 +18,9 @@
       right: 0;
       bottom: 0;
       left: 0;
-      background: url("/assets/stadium_bg.jpeg") center/cover no-repeat;
-      filter: blur(3px);
-      transform: scale(1.05);
+      background: url("/assets/bg_spectateur.png") right/cover no-repeat;
+      filter: blur(1px);
+      transform: scale(1.2);
       z-index: 0;
     }
 
