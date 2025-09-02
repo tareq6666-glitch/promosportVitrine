@@ -7,5 +7,36 @@
 
   .card {
     height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url("/assets/stadium_bg.jpeg") center/cover no-repeat;
+      filter: blur(3px);
+      transform: scale(1.05);
+      z-index: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+      z-index: 0;
+    }
+
+    .card-body {
+      position: relative;
+      z-index: 1;
+    }
   }
 }
