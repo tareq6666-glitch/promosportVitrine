@@ -6,7 +6,7 @@ import * as L from 'leaflet';
 type GovCode =
   | 'tunis' | 'ariana' | 'ben-arous' | 'manouba' | 'nabeul' | 'zaghouan' | 'bizerte' | 'beja' | 'jendouba'
   | 'kef' | 'siliana' | 'sousse' | 'monastir' | 'mahdia' | 'sfax' | 'kairouan' | 'kasserine' | 'sidi-bouzid'
-  | 'gafsa' | 'tozeur' | 'kebili' | 'gabes' | 'medenine' | 'tatouine';
+  | 'gafsa' | 'tozeur' | 'kebili' | 'gabes' | 'medenine' | 'tataouine';
 
 interface PosDetails {
   id: string;
