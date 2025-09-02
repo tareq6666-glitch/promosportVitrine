@@ -1,0 +1,56 @@
+<div class="betting-wrap text-white p-3">
+  <!-- Onglets -->
+  <ul class="nav nav-tabs mb-3 border-0">
+    <li class="nav-item" *ngFor="let t of betTypes">
+      <button
+        class="nav-link"
+        [class.active]="t === active"
+        (click)="setActive(t)"
+        type="button">
+        {{ t }}
+      </button>
+    </li>
+  </ul>
+
+  <!-- Slider : drag au curseur, pas de flèches, pas de barre -->
+  <div
+    class="scroller"
+    #scroller
+    (pointerdown)="onPointerDown($event)"
+    (pointermove)="onPointerMove($event)"
+    (pointerup)="onPointerUp($event)"
+    (pointerleave)="onPointerUp($event)">
+
+    <div class="card match-card text-white" *ngFor="let m of matches">
+      <div class="card-body">
+        <div class="d-flex justify-content-between small text-uppercase text-secondary mb-2">
+          <div><i class="bi bi-clock me-1"></i>{{ m.date }} - {{ m.time }}</div>
+          <div class="opacity-75">+{{ m.id }}</div>
+        </div>
+
+        <div class="text-secondary small mb-2">
+          <i class="bi bi-trophy me-1"></i>{{ m.league }}
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="team">{{ m.home }}</div>
+          <div class="vs">VS</div>
+          <div class="team text-end">{{ m.away }}</div>
+        </div>
+
+        <div class="row g-2 odds">
+          <div class="col-4">
+            <button class="btn w-100 odd">1<br><strong>{{ m.odds.home }}</strong></button>
+          </div>
+          <div class="col-4">
+            <button class="btn w-100 odd">X<br><strong>{{ m.odds.draw }}</strong></button>
+          </div>
+          <div class="col-4">
+            <button class="btn w-100 odd">2<br><strong>{{ m.odds.away }}</strong></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
