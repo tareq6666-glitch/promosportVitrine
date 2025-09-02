@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../core/header/header/header.component';
 import { FooterComponent } from '../core/footer/footer/footer.component';
@@ -12,8 +12,12 @@ import { Observable } from 'rxjs';
   templateUrl: './actualites.page.html',
   styleUrls: ['./actualites.page.scss'],
 })
-export class ActualitesPageComponent {
-  actualites$: Observable<Actualite[]> = this.actualitesService.getActualites();
+export class ActualitesPageComponent implements OnInit {
+  actualites$!: Observable<Actualite[]>;
 
   constructor(private actualitesService: ActualitesService) {}
+
+  ngOnInit(): void {
+    this.actualites$ = this.actualitesService.getActualites();
+  }
 }
