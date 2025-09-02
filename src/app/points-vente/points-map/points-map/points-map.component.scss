@@ -1,0 +1,37 @@
+.map-frame{
+  width: 100%;
+  height: min(70vh, 680px);
+  background: #151515;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Tooltip Leaflet custom (nom arabe) */
+.gov-tooltip{
+  background: rgba(255,255,255,.9);
+  color: #111;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+  font-weight: 700;
+  padding: 6px 10px;
+}
+
+/* Card infos */
+.info-card{
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.card-dark{
+  background: #0f0f0f;
+  color: var(--text);
+}
+
+/* Table look-alike comme la capture */
+.table-dark{
+  --bs-table-bg: #101010;
+  --bs-table-striped-bg: #121212;
+  --bs-table-color: #f1f1f1;
+}

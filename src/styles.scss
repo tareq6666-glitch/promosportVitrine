@@ -68,4 +68,28 @@ body{ background:var(--bg); color:var(--text); }
   transform: translateY(0);
   box-shadow: 0 4px 12px rgba(255,77,45,.25);
 }
+@import "leaflet/dist/leaflet.css";
+
+
+:root{
+  --header-h: 64px;       /* hauteur indicative, pas critique en sticky */
+  --gap-below-header: 16px;
+}
+
+app-header{
+  position: sticky; top:0; z-index:1000; display:block;
+  /* Optionnel: trait de séparation */
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  backdrop-filter: blur(8px);
+}
+
+.site-main{
+  /* léger espace sous le header pour ne pas “toucher” */
+  padding-top: var(--gap-below-header);
+}
+
+.page-pdv{
+  /* marge propre à cette page si tu veux plus d’air */
+  margin-top: 4px;
+}
 

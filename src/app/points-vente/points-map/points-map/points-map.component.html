@@ -1,0 +1,48 @@
+<div class="row g-4 align-items-start">
+  <!-- Carte -->
+  <div class="col-12 col-lg-7">
+    <div id="tn-map" class="map-frame"></div>
+    <div *ngIf="loading" class="text-center py-3 small opacity-75">Chargement de la carte…</div>
+    <div *ngIf="error" class="alert alert-danger mt-2">{{ error }}</div>
+  </div>
+
+  <!-- Carte d'infos (card dynamique) -->
+  <div class="col-12 col-lg-5">
+    <div class="card card-dark info-card" *ngIf="selectedGovCode; else placeholder">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <strong class="text-white">معلومات عن نقطة البيع</strong>
+        <button class="btn btn-sm btn-outline-light" (click)="clearSelection()">إغلاق</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-dark table-striped table-borderless mb-0">
+          <tbody>
+            <tr>
+              <td class="w-25 text-secondary">المعرّف</td>
+              <td class="text-end">{{ selectedDetails?.id || '—' }}</td>
+            </tr>
+            <tr>
+              <td class="text-secondary">نشاط</td>
+              <td class="text-end">{{ selectedDetails?.activity || '—' }}</td>
+            </tr>
+            <tr>
+              <td class="text-secondary">منطقة</td>
+              <td class="text-end">{{ selectedDetails?.region || selectedGovNameAr }}</td>
+            </tr>
+            <tr>
+              <td class="text-secondary">عنوان نقطة بيع</td>
+              <td class="text-end">{{ selectedDetails?.address || '—' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <ng-template #placeholder>
+      <div class="card card-dark info-card text-center p-4">
+        <div class="text-secondary mb-2">اختر ولاية من الخريطة</div>
+        <small class="opacity-75">مرّر فوق الخريطة، ثم انقر على الولاية لعرض التفاصيل.</small>
+      </div>
+    </ng-template>
+  </div>
+</div>
