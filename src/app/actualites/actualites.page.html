@@ -9,7 +9,13 @@
           <h5 class="card-title">{{ act.title_ar }}</h5>
           <p class="card-text">{{ act.summary_ar }}</p>
           <p class="card-text mt-auto"><small class="text-muted">{{ act.date_text }}</small></p>
-          <a class="btn btn-primary mt-2" [href]="act.url" target="_blank" rel="noopener">Voir plus</a>
+          <button
+            *ngIf="act.content_ar"
+            class="btn btn-primary mt-2"
+            (click)="toggle(act.id)">
+            {{ expandedId === act.id ? 'Afficher moins' : 'Afficher plus' }}
+          </button>
+          <p *ngIf="expandedId === act.id">{{ act.content_ar }}</p>
         </div>
       </div>
     </div>

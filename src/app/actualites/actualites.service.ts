@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 export interface Actualite {
   id: number;
   title_ar: string;
+  content_ar?: string;
   category: string;
   date_text: string;
   date_iso: string;
