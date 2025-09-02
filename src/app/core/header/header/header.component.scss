@@ -1,6 +1,6 @@
 .main-nav{
-  position: absolute; /* superposé au hero */
-  inset: 0 0 auto 0;
+  position: relative; /* participate in normal flow */
+  min-height: var(--header-h);
   background: transparent;
   z-index: 30;
   .nav-link{
