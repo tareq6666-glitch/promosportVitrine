@@ -3,8 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Actualite {
-  title: string;
+  id: number;
+  title_ar: string;
+  category: string;
+  date_text: string;
+  date_iso: string;
   url: string;
+  summary_ar: string;
+  source: string;
+  order: number;
 }
 
 @Injectable({ providedIn: 'root' })
