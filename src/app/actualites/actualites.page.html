@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<main class="container container-narrow my-4" *ngIf="actualites$ | async as actualites">
+  <h1 class="mb-3">Actualités</h1>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let act of actualites">
+      <a [href]="act.url" target="_blank" rel="noopener">{{ act.title }}</a>
+    </li>
+  </ul>
+</main>
+
+<app-footer></app-footer>
