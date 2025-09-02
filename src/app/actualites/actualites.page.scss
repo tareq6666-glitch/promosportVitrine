@@ -9,6 +9,7 @@
     height: 100%;
     position: relative;
     overflow: hidden;
+    color: #fff;
 
     &::before {
       content: "";
@@ -39,4 +40,8 @@
       z-index: 1;
     }
   }
+}
+
+.actualites-grid .card .text-muted {
+  color: rgba(255, 255, 255, 0.6) !important;
 }
