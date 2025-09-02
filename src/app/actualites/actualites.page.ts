@@ -14,10 +14,15 @@ import { Observable } from 'rxjs';
 })
 export class ActualitesPageComponent implements OnInit {
   actualites$!: Observable<Actualite[]>;
+  expandedId: number | null = null;
 
   constructor(private actualitesService: ActualitesService) {}
 
   ngOnInit(): void {
     this.actualites$ = this.actualitesService.getActualites();
+  }
+
+  toggle(id: number) {
+    this.expandedId = this.expandedId === id ? null : id;
   }
 }
