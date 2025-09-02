@@ -2,11 +2,18 @@
 
 <main class="container container-narrow my-4" *ngIf="actualites$ | async as actualites">
   <h1 class="mb-3">Actualités</h1>
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let act of actualites">
-      <a [href]="act.url" target="_blank" rel="noopener">{{ act.title_ar }}</a>
-    </li>
-  </ul>
+  <div class="row g-3 actualites-grid">
+    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let act of actualites">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ act.title_ar }}</h5>
+          <p class="card-text">{{ act.summary_ar }}</p>
+          <p class="card-text mt-auto"><small class="text-muted">{{ act.date_text }}</small></p>
+          <a class="btn btn-primary mt-2" [href]="act.url" target="_blank" rel="noopener">Voir plus</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 
 <app-footer></app-footer>
