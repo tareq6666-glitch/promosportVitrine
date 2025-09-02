@@ -1,0 +1,55 @@
+.section-title{
+  font-weight: 800;
+  letter-spacing: .02em;
+  margin-bottom: 16px;
+}
+
+/* Carte de gauche */
+.about-card{
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #0f0f0f; /* légèrement plus clair que le fond page */
+}
+
+/* Onglets en haut de la carte */
+.about-tabs{
+  gap: 16px;
+  .nav-link{
+    color: #cfcfcf;
+    border: 0;
+    background: transparent;
+    padding: .4rem .6rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+  .nav-link.active{
+    color: #fff;
+    text-decoration: none;
+    background: transparent;
+    box-shadow: inset 0 -2px 0 var(--primary); /* liseré orange en bas */
+  }
+}
+
+/* Texte */
+.text-accent{ color: var(--primary); font-weight: 800; }
+.about-list{
+  margin: 0;
+  padding-left: 1.1rem;
+  li{ margin-bottom: .35rem; }
+}
+
+/* Image de droite */
+.img-frame{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+
+@media (max-width: 991.98px){
+  .img-frame{ padding: 8px; }
+}

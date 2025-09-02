@@ -1,0 +1,81 @@
+<section class="about-wrap">
+  <div class="container container-narrow">
+    <h2 class="section-title">A PROPOS DE PROMOSPORT</h2>
+
+    <div class="row g-4 align-items-stretch">
+      <!-- Colonne texte (gauche) -->
+      <div class="col-lg-7">
+        <div class="about-card card-dark h-100">
+          <!-- Onglets -->
+          <ul class="nav about-tabs border-0">
+            <li class="nav-item" *ngFor="let t of tabs">
+              <button
+                class="nav-link"
+                [class.active]="t === active"
+                (click)="setActive(t)"
+                type="button">
+                {{ t | uppercase }}
+              </button>
+            </li>
+          </ul>
+
+          <!-- Contenu des onglets -->
+          <div class="tab-content mt-3">
+            <!-- Cadre juridique -->
+            <div *ngIf="active === 'Cadre juridique'" class="tab-pane fade show active">
+              <p>
+                La société <strong>Promosport</strong> est une entreprise publique sous tutelle du
+                <em>Ministère de la Jeunesse des Sports et de l’Éducation physique</em>, créée par la loi
+                <strong>84-83 du 6 Août 1984</strong>, portant organisation et développement des activités
+                physiques et sportives (art 67 à 70).
+              </p>
+              <p>
+                Elle est chargée, en vertu de la réglementation en vigueur, de l’organisation des concours
+                de pronostics sportifs, des jeux, des combinaisons, des concours et des opérations
+                assimilées et qui ont pour objet la promotion des activités physiques et sportives.
+              </p>
+
+              <h6 class="text-accent mt-4 mb-2">Organes de gestion et de contrôle :</h6>
+              <p>
+                La gestion de la société Promosport est assurée par un conseil d’administration présidé
+                par le président directeur général de la société.
+              </p>
+              <p class="mb-2">Le conseil d’administration est composé par des membres représentant :</p>
+              <ul class="about-list">
+                <li>Le Premier ministre.</li>
+                <li>Le Ministère de la Jeunesse des Sports et de l’Éducation physique.</li>
+                <li>Le Ministère des Finances.</li>
+                <li>Le Ministère du Développement et de la Coopération Internationale.</li>
+                <li>Le Ministère de l’Intérieur et du Développement local.</li>
+                <li>La Fédération Tunisienne du Football.</li>
+              </ul>
+            </div>
+
+            <!-- Notre mission (placeholder) -->
+            <div *ngIf="active === 'Notre mission'" class="tab-pane fade show active">
+              <p>
+                Promouvoir la pratique sportive à travers des jeux responsables, financer les infrastructures
+                sportives nationales et soutenir l’écosystème associatif.
+              </p>
+            </div>
+
+            <!-- Réglementation (placeholder) -->
+            <div *ngIf="active === 'Réglementation'" class="tab-pane fade show active">
+              <p>
+                Les opérations sont encadrées par la loi 84-83 et ses textes d’application. Les modalités de
+                participation et de paiement respectent les normes de conformité et de lutte contre la fraude.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne image (droite) -->
+      <div class="col-lg-5">
+        <div class="img-frame">
+          <img src="/assets/zemni.png" class="w-100 h-auto" alt="Affiche Promosport">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,76 @@
+/* ===== Banner ===== */
+.promo-banner{
+  margin-top: 32px;
+}
+.banner-wrap{
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+.badge-18{
+  position: absolute;
+  left: 12px; bottom: 12px;
+  background: #fff; color:#111;
+  font-weight: 800; font-size: 12px;
+  width: 36px; height: 36px; border-radius: 999px;
+  display: grid; place-items: center;
+  box-shadow: 0 6px 14px rgba(0,0,0,.25);
+}
+
+/* ===== Newsletter orange ===== */
+.newsletter-cta{
+  margin-top: -8px; /* colle à la bannière */
+  background: var(--primary);
+  color: #1d1d1d;
+  padding: 18px 0;
+}
+.cta-left p{
+  margin: 0; color: #2b0f08; font-weight: 600;
+}
+.btn-subscribe{
+  background: #1b1b1b; color: #fff; border: 0;
+  border-radius: 999px; padding: 6px 14px; font-weight: 700;
+  margin-top: 12px;
+}
+.cta-right{
+  display:flex; align-items:center; gap:14px; justify-content: flex-start;
+  border-left: 1px solid rgba(0,0,0,.15);
+  padding-left: 16px;
+}
+.cta-right .label{ font-weight: 700; color:#1b1b1b; }
+.socials{ display:flex; gap:10px; }
+.soc{
+  width:36px;height:36px;border-radius:999px;
+  background:#1b1b1b;color:#fff;display:grid;place-items:center;
+  font-size:18px;text-decoration:none;
+}
+.soc:hover{ opacity:.9; }
+
+/* ===== Footer principal ===== */
+.footer-main{
+  background:#0f0f0f;
+  border-top:1px solid var(--line);
+  padding: 24px 0;
+}
+.footer-main h6{
+  color:#fff; font-weight:800; margin-bottom:10px; text-transform: none;
+}
+.footer-main a{
+  color:#cfcfcf; text-decoration:none;
+}
+.footer-main a:hover{ color:#fff; text-decoration:underline; }
+.brand img{ filter: drop-shadow(0 6px 16px rgba(0,0,0,.35)); }
+
+/* ===== Légal ===== */
+.legal-strip{
+  background:#0a0a0a; color:#bdbdbd;
+  padding: 10px 0; border-top:1px solid var(--line);
+}
+
+/* Responsive ajustements */
+@media (max-width: 991.98px){
+  .cta-right{ border-left: none; padding-left: 0; }
+  .newsletter-cta{ text-align: center; }
+  .btn-subscribe{ margin-top: 10px; }
+}
