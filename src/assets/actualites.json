@@ -1,10 +1,24 @@
 [
   {
-    "title": "Lancement du nouveau site",
-    "url": "https://example.com/news1"
+    "id": 1,
+    "title_ar": "Lancement du nouveau site",
+    "category": "general",
+    "date_text": "1 janvier 2023",
+    "date_iso": "2023-01-01",
+    "url": "https://example.com/news1",
+    "summary_ar": "Résumé du lancement du nouveau site",
+    "source": "PromoSport",
+    "order": 1
   },
   {
-    "title": "Résultats du dernier tirage",
-    "url": "https://example.com/news2"
+    "id": 2,
+    "title_ar": "Résultats du dernier tirage",
+    "category": "resultats",
+    "date_text": "1 février 2023",
+    "date_iso": "2023-02-01",
+    "url": "https://example.com/news2",
+    "summary_ar": "Résumé des résultats du dernier tirage",
+    "source": "PromoSport",
+    "order": 2
   }
 ]
