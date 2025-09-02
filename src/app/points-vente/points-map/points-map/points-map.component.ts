@@ -29,7 +29,7 @@ const GOV_META: Record<string, { code: GovCode; name_ar: string; name_fr: string
   'Sidi Bouzid': { code: 'sidi-bouzid', name_ar: 'سيدي بوزيد', name_fr: 'Sidi Bouzid' },
   'Kébili': { code: 'kebili', name_ar: 'قبلي', name_fr: 'Kébili' },
   'Béja': { code: 'beja', name_ar: 'باجة', name_fr: 'Béja' },
-  'Tataouine': { code: 'tatouine', name_ar: 'تطاوين', name_fr: 'Tataouine' },
+  'Tataouine': { code: 'tataouine', name_ar: 'تطاوين', name_fr: 'Tataouine' },
   'Gabès': { code: 'gabes', name_ar: 'قابس', name_fr: 'Gabès' },
   'Bizerte': { code: 'bizerte', name_ar: 'بنزرت', name_fr: 'Bizerte' },
   'Ariana': { code: 'ariana', name_ar: 'أريانة', name_fr: 'Ariana' },
