@@ -15,6 +15,60 @@ interface PosDetails {
   address: string;
 }
 
+const GOV_META: Record<string, { code: GovCode; name_ar: string; name_fr: string }> = {
+  'Tunis': { code: 'tunis', name_ar: 'تونس', name_fr: 'Tunis' },
+  'Ben Arous': { code: 'ben-arous', name_ar: 'بن عروس', name_fr: 'Ben Arous' },
+  'El Kef': { code: 'kef', name_ar: 'الكاف', name_fr: 'Le Kef' },
+  'Sousse': { code: 'sousse', name_ar: 'سوسة', name_fr: 'Sousse' },
+  'Sfax': { code: 'sfax', name_ar: 'صفاقس', name_fr: 'Sfax' },
+  'Jendouba': { code: 'jendouba', name_ar: 'جندوبة', name_fr: 'Jendouba' },
+  'Kairouan': { code: 'kairouan', name_ar: 'القيروان', name_fr: 'Kairouan' },
+  'Kasserine': { code: 'kasserine', name_ar: 'القصرين', name_fr: 'Kasserine' },
+  'Mahdia': { code: 'mahdia', name_ar: 'المهدية', name_fr: 'Mahdia' },
+  'Manouba': { code: 'manouba', name_ar: 'منوبة', name_fr: 'Manouba' },
+  'Sidi Bouzid': { code: 'sidi-bouzid', name_ar: 'سيدي بوزيد', name_fr: 'Sidi Bouzid' },
+  'Kébili': { code: 'kebili', name_ar: 'قبلي', name_fr: 'Kébili' },
+  'Béja': { code: 'beja', name_ar: 'باجة', name_fr: 'Béja' },
+  'Tataouine': { code: 'tatouine', name_ar: 'تطاوين', name_fr: 'Tataouine' },
+  'Gabès': { code: 'gabes', name_ar: 'قابس', name_fr: 'Gabès' },
+  'Bizerte': { code: 'bizerte', name_ar: 'بنزرت', name_fr: 'Bizerte' },
+  'Ariana': { code: 'ariana', name_ar: 'أريانة', name_fr: 'Ariana' },
+  'Nabeul': { code: 'nabeul', name_ar: 'نابل', name_fr: 'Nabeul' },
+  'Monastir': { code: 'monastir', name_ar: 'المنستير', name_fr: 'Monastir' },
+  'Siliana': { code: 'siliana', name_ar: 'سليانة', name_fr: 'Siliana' },
+  'Zaghouan': { code: 'zaghouan', name_ar: 'زغوان', name_fr: 'Zaghouan' },
+  'Gafsa': { code: 'gafsa', name_ar: 'قفصة', name_fr: 'Gafsa' },
+  'Médenine': { code: 'medenine', name_ar: 'مدنين', name_fr: 'Médenine' },
+  'Tozeur': { code: 'tozeur', name_ar: 'توزر', name_fr: 'Tozeur' },
+};
+
+const MOCK_DETAILS: Record<GovCode, PosDetails> = Object.values(GOV_META).reduce(
+  (acc, meta) => {
+    acc[meta.code] = {
+      id: 'N/A',
+      activity: 'N/A',
+      region: meta.name_ar,
+      address: 'N/A',
+    };
+    return acc;
+  },
+  {} as Record<GovCode, PosDetails>
+);
+
+MOCK_DETAILS['kairouan'] = {
+  id: '08/0018',
+  activity: 'حلاق',
+  region: 'القيروان',
+  address: '4 نهج اللمسن، القيروان',
+};
+
+MOCK_DETAILS['sidi-bouzid'] = {
+  id: '12/0451',
+  activity: 'مكتبة',
+  region: 'سيدي بوزيد',
+  address: 'نهج الحبيب بورقيبة، سيدي بوزيد',
+};
+
 @Component({
   selector: 'app-points-map',
   standalone: true,
@@ -30,22 +84,8 @@ export class PointsMapComponent implements AfterViewInit {
   private map!: L.Map;
   private geoLayer!: L.GeoJSON;
 
-  // Détails mock (clé = code gov). Tu remplaceras par tes données réelles.
-  detailsByGov: Partial<Record<GovCode, PosDetails>> = {
-    'kairouan': {
-      id: '08/0018',
-      activity: 'حلاق',
-      region: 'القيروان',
-      address: '4 نهج اللمسن، القيروان',
-    },
-    'sidi-bouzid': {
-      id: '12/0451',
-      activity: 'مكتبة',
-      region: 'سيدي بوزيد',
-      address: 'نهج الحبيب بورقيبة، سيدي بوزيد',
-    },
-    // ... complète les autres gouvernorats
-  };
+  // Détails mock (clé = code gov). À remplacer par tes données réelles.
+  detailsByGov: Record<GovCode, PosDetails> = MOCK_DETAILS;
 
   selectedGovCode: GovCode | null = null;
   selectedGovNameAr = '';
@@ -80,6 +120,20 @@ export class PointsMapComponent implements AfterViewInit {
   private loadGeojson() {
     this.http.get(this.geojsonUrl).subscribe({
       next: (data: any) => {
+        if (data?.features) {
+          data.features.forEach((f: any) => {
+            const meta = GOV_META[f.properties?.shapeName];
+            if (meta) {
+              f.properties = {
+                ...f.properties,
+                code: meta.code,
+                name_ar: meta.name_ar,
+                name_fr: meta.name_fr,
+              };
+            }
+          });
+        }
+
         this.geoLayer = L.geoJSON(data, {
           style: () => ({
             color: '#ffffff',        // contour
@@ -103,7 +157,9 @@ export class PointsMapComponent implements AfterViewInit {
 
   private bindFeatureEvents(feature: any, layer: L.Path) {
     const props = feature.properties || {};
-    const code: GovCode = (props.code || '').toLowerCase();
+    const rawCode = (props.code || '').toLowerCase();
+    if (!rawCode) { return; }
+    const code = rawCode as GovCode;
     const nameAr: string = props.name_ar || code;
 
     // Tooltip au survol (style custom via CSS .gov-tooltip)
