@@ -1,0 +1,25 @@
+.contact-section {
+  background: url('/assets/bg_spectateur.png') center/cover no-repeat;
+  padding: 4rem 1rem;
+}
+
+.contact-card {
+  max-width: 600px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
