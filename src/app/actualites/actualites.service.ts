@@ -19,6 +19,6 @@ export class ActualitesService {
   constructor(private http: HttpClient) {}
 
   getActualites(): Observable<Actualite[]> {
-    return this.http.get<Actualite[]>('assets/actualites.json');
+    return this.http.get<Actualite[]>('assets/actualities.json');
   }
 }
