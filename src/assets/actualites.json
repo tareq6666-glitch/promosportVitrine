@@ -1,10 +1,19 @@
 [
   {
-    "title": "Lancement du nouveau site",
-    "url": "https://example.com/news1"
+    "title_ar": "إطلاق الموقع الجديد",
+    "date_text": "01-01-2024",
+    "category": "أخبار",
+    "summary_ar": "تم إطلاق الموقع الرسمي الجديد لتونـس لوتو.",
+    "url": "https://example.com/news1",
+    "source": "Example News"
   },
   {
-    "title": "Résultats du dernier tirage",
-    "url": "https://example.com/news2"
+    "title_ar": "نتائج السحب الأخير",
+    "date_text": "05-01-2024",
+    "category": "نتائج",
+    "summary_ar": "تم الإعلان عن نتائج السحب الأخير للبرنامج.",
+    "url": "https://example.com/news2",
+    "source": "Example News"
   }
 ]
+

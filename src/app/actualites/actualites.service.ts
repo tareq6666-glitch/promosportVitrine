@@ -3,8 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Actualite {
-  title: string;
+  title_ar: string;
+  date_text: string;
+  category: string;
+  summary_ar: string;
   url: string;
+  source: string;
 }
 
 @Injectable({ providedIn: 'root' })
